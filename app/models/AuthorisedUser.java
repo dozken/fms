@@ -34,7 +34,15 @@ public class AuthorisedUser extends Model implements Subject
     @Id
     public Long id;
 
-    public String userName;
+    public String firstName;
+    
+    public String lastName; 
+    
+    public String email;
+    
+    public String password;
+    
+    public String tel;
 
     @ManyToMany
     public List<SecurityRole> roles;
@@ -60,7 +68,7 @@ public class AuthorisedUser extends Model implements Subject
     @Override
     public String getIdentifier()
     {
-        return userName;
+        return email;
     }
 
     public static AuthorisedUser findByUserName(String userName)

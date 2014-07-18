@@ -34,7 +34,7 @@ public class Global extends GlobalSettings
     {
         if (SecurityRole.find.findRowCount() == 0)
         {
-            for (String name : Arrays.asList("foo", "bar", "hurdy", "gurdy"))
+            for (String name : Arrays.asList("admin", "buh", "cadmin", "cbuh"))
             {
                 SecurityRole role = new SecurityRole();
                 role.name = name;
@@ -52,18 +52,16 @@ public class Global extends GlobalSettings
         if (AuthorisedUser.find.findRowCount() == 0)
         {
             AuthorisedUser user = new AuthorisedUser();
-            user.userName = "steve";
+            user.firstName = "Global";
+            user.lastName = "Analytic";
+            user.email = "global@analytic";
             user.roles = new ArrayList<SecurityRole>();
-            user.roles.add(SecurityRole.findByName("foo"));
-            user.roles.add(SecurityRole.findByName("bar"));
+            user.roles.add(SecurityRole.findByName("admin"));
             user.permissions = new ArrayList<UserPermission>();
             user.permissions.add(UserPermission.findByValue("printers.edit"));
-
             user.save();
-            Ebean.saveManyToManyAssociations(user,
-                                             "roles");
-            Ebean.saveManyToManyAssociations(user,
-                                             "permissions");
+            Ebean.saveManyToManyAssociations(user,"roles");
+            Ebean.saveManyToManyAssociations(user,"permissions");
         }
     }
 }
