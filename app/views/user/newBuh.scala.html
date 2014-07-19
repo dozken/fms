@@ -1,0 +1,61 @@
+@content("newBuh"){
+ <form role="form" action="@controllers.routes.Users.saveBuh()" method="POST">
+  <h1 class="text-primary col-xs-offset-5"> @Messages("registration") </h1>
+  @if(flash().get("authorization")!=null){
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>@Messages(flash().get("authorization"))</strong>
+        </div>
+  }
+  <div class="col-md-4 col-md-offset-4">
+  <div class="form-group">
+    <label for="exampleInputEmail1">@Messages("firstname")</label>
+    <input type="text" name="firstname" class="form-control" id="exampleInputEmail1" placeholder='@Messages("firstName")'>
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputEmail1">@Messages("lastname")</label>
+    <input type="text" name="identifier" class="form-control" id="exampleInputEmail1" placeholder='@Messages("lastName")'>
+  </div>
+  
+  <div class="form-group">
+    <label>@Messages("telephone")</label>
+    <div class="tels">
+    	<div class="tel">
+    		<input type="text" name="identifier" class="form-control" id="exampleInputEmail1" placeholder='@Messages("telephone")'>
+    	</div>
+    	<div class="tel">
+    		<input type="text" name="identifier" class="form-control" id="exampleInputEmail1" placeholder="@Messages("telephone")">
+    		<button type="button" style="margin-top:-25px;" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    	</div>
+	</div>    	
+    <button type="button" id="addTel"> @Messages("add") </button>
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputEmail1">@Messages("email")</label>
+    <input type="email" name="identifier" class="form-control" id="exampleInputEmail1" placeholder='@Messages("email")'>
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">@Messages("password")</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder='@Messages("password")'>
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">@Messages("repeat")</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder='@Messages("repeatPassword")'>
+  </div>
+  
+  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+  </div>
+</form>
+}
+<script type="text/javascript">
+	$("#addTel").click(function() {
+		 $(".tels").append('<div class="tel">'+
+    		'<input type="text" name="identifier" class="form-control" id="exampleInputEmail1" placeholder="@Messages("telephone")">'+
+    		'<button type="button" style="margin-top:-25px;" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>'); 
+	}); 
+</script>
+

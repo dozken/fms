@@ -15,11 +15,13 @@
  */
 
 import com.avaje.ebean.Ebean;
+
 import models.AuthorisedUser;
 import models.SecurityRole;
 import models.UserPermission;
 import play.Application;
 import play.GlobalSettings;
+import play.libs.Crypto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,6 +57,7 @@ public class Global extends GlobalSettings
             user.firstName = "Global";
             user.lastName = "Analytic";
             user.email = "global@analytic";
+            user.password = Crypto.encryptAES("1234");
             user.roles = new ArrayList<SecurityRole>();
             user.roles.add(SecurityRole.findByName("admin"));
             user.permissions = new ArrayList<UserPermission>();

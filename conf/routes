@@ -5,6 +5,15 @@
 # Home page
 GET     /                               controllers.Application.index
 
+# User
+
+POST    /login                          controllers.Users.login
+GET     /newBuh                         controllers.Users.newBuh()
+GET     /buhs                           controllers.Users.buhs()
+POST    /saveBuh                        controllers.Users.saveBuh()
+
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

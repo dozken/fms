@@ -23,6 +23,7 @@ import play.db.ebean.Model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
 import java.util.List;
 
 /**
@@ -50,9 +51,7 @@ public class AuthorisedUser extends Model implements Subject
     @ManyToMany
     public List<UserPermission> permissions;
 
-    public static final Finder<Long, AuthorisedUser> find = new Finder<Long, AuthorisedUser>(Long.class,
-                                                                                             AuthorisedUser.class);
-
+    public static final Finder<Long, AuthorisedUser> find = new Finder<Long, AuthorisedUser>(Long.class,AuthorisedUser.class);
     @Override
     public List<? extends Role> getRoles()
     {
@@ -78,4 +77,12 @@ public class AuthorisedUser extends Model implements Subject
                        userName)
                    .findUnique();
     }
+
+	public static AuthorisedUser getByTel(String tel, String password) {
+		return find.where().eq("tel", tel).eq("password", password).findUnique();
+	}
+
+	public static AuthorisedUser getByMail(String email, String password) {
+		return find.where().eq("email", email).eq("password", password).findUnique();
+	}
 }

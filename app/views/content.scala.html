@@ -1,0 +1,20 @@
+@(title: String)(content: Html)
+
+@import be.objectify.deadbolt.java.views.html._
+@import be.objectify.deadbolt.core.utils.TemplateUtils._
+@import play.i18n._
+
+
+@main(title){
+  @navbar()
+  <div class="container-fluid">		 
+	<div class="row">
+		<div class="col-md-2 well hidden-phone">
+			@navlist()	  
+		</div>
+		<div class="col-md-10 well">
+			@content
+		</div>
+	</div>
+  </div>
+}
