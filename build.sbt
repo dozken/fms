@@ -10,6 +10,7 @@ organization := "be.objectify"
 
 libraryDependencies ++= Seq(
   javaEbean,
+  "org.webjars" %% "webjars-play" % "2.3.0",
   "be.objectify" %% "deadbolt-java" % "2.3.0-RC1",
   "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
   "org.apache.directory.studio" % "org.apache.commons.io" % "2.4",

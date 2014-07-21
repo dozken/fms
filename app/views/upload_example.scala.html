@@ -1,9 +1,5 @@
 @()
 
-@import play.i18n._
-@import be.objectify.deadbolt.java.views.html._
-@import be.objectify.deadbolt.core.utils.TemplateUtils._
-
 <html>
     <header>
         <link rel="stylesheet" media="screen" href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))' />
@@ -15,8 +11,11 @@
         <script type="text/javascript" src='@routes.Assets.at("javascripts/upload.js")'></script>
     </header>
     <body>
+        <input type="button" id="get_file" value="Upload">
+        <input type="file" id="alternative" multiple style="display:none;"/>
         <div id="draganddrophandler">Drag & Drop Files Here</div>
         <br><br>
         <div id="status1"></div>
     </body>
+    <script type="text/javascript" src='@routes.Assets.at("javascripts/upload.js")'></script>
 </html>

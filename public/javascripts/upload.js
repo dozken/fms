@@ -133,3 +133,9 @@ $(document).ready(function()
     });
 
 });
+$("#get_file").on("click", function(){
+    $("#alternative").click();
+});
+$("#alternative").on("change", function(){
+    handleFileUpload($("#alternative")[0].files, $("#draganddrophandler"));
+});

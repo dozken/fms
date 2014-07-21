@@ -22,7 +22,7 @@ create table company (
 
 create table file (
   id                        bigint not null,
-  folder_id                 bigint not null,
+  mail_id                   bigint not null,
   name                      varchar(255),
   path                      varchar(255),
   type                      varchar(255),
@@ -41,6 +41,7 @@ create table folder (
 create table mail (
   id                        bigint not null,
   message                   varchar(255),
+  status                    varchar(255),
   time                      bigint,
   constraint pk_mail primary key (id))
 ;
@@ -87,12 +88,6 @@ create table file_folder (
   folder_id                      bigint not null,
   constraint pk_file_folder primary key (file_id, folder_id))
 ;
-
-create table mail_file (
-  mail_id                        bigint not null,
-  file_id                        bigint not null,
-  constraint pk_mail_file primary key (mail_id, file_id))
-;
 create sequence authorised_user_seq;
 
 create sequence company_seq;
@@ -107,8 +102,8 @@ create sequence security_role_seq;
 
 create sequence user_permission_seq;
 
-alter table file add constraint fk_file_folder_1 foreign key (folder_id) references folder (id);
-create index ix_file_folder_1 on file (folder_id);
+alter table file add constraint fk_file_mail_1 foreign key (mail_id) references mail (id);
+create index ix_file_mail_1 on file (mail_id);
 alter table folder add constraint fk_folder_user_2 foreign key (user_id) references authorised_user (id);
 create index ix_folder_user_2 on folder (user_id);
 
@@ -134,10 +129,6 @@ alter table file_folder add constraint fk_file_folder_file_01 foreign key (file_
 
 alter table file_folder add constraint fk_file_folder_folder_02 foreign key (folder_id) references folder (id);
 
-alter table mail_file add constraint fk_mail_file_mail_01 foreign key (mail_id) references mail (id);
-
-alter table mail_file add constraint fk_mail_file_file_02 foreign key (file_id) references file (id);
-
 # --- !Downs
 
 drop table if exists authorised_user cascade;
@@ -159,8 +150,6 @@ drop table if exists file_folder cascade;
 drop table if exists folder cascade;
 
 drop table if exists mail cascade;
-
-drop table if exists mail_file cascade;
 
 drop table if exists security_role cascade;
 

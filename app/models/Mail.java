@@ -2,11 +2,7 @@ package models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
@@ -22,9 +18,11 @@ public class Mail extends Model{
 	public AuthorisedUser from;
 	
 	public String message; 
-	
-	
-	@ManyToMany(cascade = CascadeType.ALL)
+
+    // draft, sent, or deleted
+    public String status;
+
+	@OneToMany(cascade = CascadeType.ALL)
 	public List<File> atts;
 	
 	public Long time;
