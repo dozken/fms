@@ -1,0 +1,22 @@
+@()
+
+@import play.i18n._
+@import be.objectify.deadbolt.java.views.html._
+@import be.objectify.deadbolt.core.utils.TemplateUtils._
+
+<html>
+    <header>
+        <link rel="stylesheet" media="screen" href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))' />
+        <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/launcher.ico")'>
+        <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/upload.css")'/>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+        <script type="text/javascript" src='@routes.Application.javascriptRoutes'></script>
+        <script type="text/javascript" src='@routes.Assets.at("javascripts/upload.js")'></script>
+    </header>
+    <body>
+        <div id="draganddrophandler">Drag & Drop Files Here</div>
+        <br><br>
+        <div id="status1"></div>
+    </body>
+</html>

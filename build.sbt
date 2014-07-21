@@ -12,8 +12,9 @@ libraryDependencies ++= Seq(
   javaEbean,
   "be.objectify" %% "deadbolt-java" % "2.3.0-RC1",
   "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
-  "org.webjars" %% "webjars-play" % "2.3.0",
-  "org.webjars" % "bootstrap" % "3.2.0"
+  "org.apache.directory.studio" % "org.apache.commons.io" % "2.4",
+  "org.webjars" % "bootstrap" % "3.2.0",
+  "org.webjars" % "jquery" % "2.1.1"
 )
 
 resolvers += Resolver.url("Objectify Play Repository", url("http://schaloner.github.com/releases/"))(Resolver.ivyStylePatterns)
