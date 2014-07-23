@@ -16,21 +16,29 @@ public class File extends Model{
 	
     @Id
     public Long id;
-    
+
 	public String name;
 	
-	public String path; 
-	
+	public String path;
+
 	public String type;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	public List<AuthorisedUser> users;
+	@ManyToOne(cascade = CascadeType.ALL)
+	public AuthorisedUser user;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+    public Folder folder;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Mail mail;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	public List<Folder> folders;
-	
-	public Long time;  
+	public Long time;
+
+    public boolean trashed;
 	
 	public static final Finder<Long, File> find = new Finder<Long, File>(Long.class,File.class);
-	
+
+    public static File findByInfo(AuthorisedUser user, Folder folder, String name){
+        return find.where().eq("folder", folder).eq("name", name).ne("trashed",false).findUnique();
+    }
 }

@@ -18,8 +18,10 @@ package models;
 import be.objectify.deadbolt.core.models.Permission;
 import be.objectify.deadbolt.core.models.Role;
 import be.objectify.deadbolt.core.models.Subject;
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -37,8 +39,10 @@ public class AuthorisedUser extends Model implements Subject
 
     public String firstName;
     
-    public String lastName; 
-    
+    public String lastName;
+
+    @Column(unique=true)
+    @Constraints.Email
     public String email;
     
     public String password;
@@ -85,4 +89,7 @@ public class AuthorisedUser extends Model implements Subject
 	public static AuthorisedUser getByMail(String email, String password) {
 		return find.where().eq("email", email).eq("password", password).findUnique();
 	}
+    public static AuthorisedUser findByMail(String email){
+        return find.where().eq("email", email).findUnique();
+    }
 }

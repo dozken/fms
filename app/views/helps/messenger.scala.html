@@ -1,0 +1,37 @@
+@(status: String, resultTitle : String, resultText : String)
+
+@import play.i18n._
+@import helper._
+@import helper.twitterBootstrap._
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" contentPage="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" contentPage="" />
+    <meta name="author" contentPage="" />
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/main.css")'/>
+    <link rel="stylesheet" media="print" href='@routes.Assets.at("bootstrap/css/accafe/bootstrap.css")' />
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("bootstrap/css/accafe/bootstrap.css")' />
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("bootstrap/css/bootstrap.min.css")' />
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("bootstrap/css/bootstrap-responsive.css")' />
+    <link rel="stylesheet" media="screen" href='@routes.Assets.at("bootstrap/css/bootstrap-responsive.min.css")' />
+    <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/launcher.ico")'>
+    <script src="@routes.Assets.at("javascripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+</head>
+<body>
+<br><br><br>
+<div class="span12 row-fluid">
+    <div class="span4 offset4 row-fluid">
+        <div class='span12 alert alert-@status'>
+            @resultTitle
+            <hr>
+            @resultText
+        </div>
+    </div>
+</div>
+</body>
+</html>

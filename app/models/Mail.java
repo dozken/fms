@@ -19,11 +19,11 @@ public class Mail extends Model{
 	
 	public String message; 
 
-    // draft, sent, or deleted
+    // drafted, sent, or deleted
     public String status;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	public List<File> atts;
+	/*@OneToMany(cascade = CascadeType.ALL)
+	public List<File> atts;*/
 	
 	public Long time;
 		

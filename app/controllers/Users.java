@@ -36,6 +36,14 @@ public class Users extends Controller
         	return ok(home.render());
         }
     }
+
+    public static AuthorisedUser getConnectedUser(){
+        String mail = session().get("connected");
+        if(mail==null)
+            return null;
+        else
+            return AuthorisedUser.findByMail(mail);
+    }
     
     public static Result newBuh() {
     	return ok(newBuh.render()); 

@@ -13,8 +13,8 @@ GET         /buhs                     controllers.Users.buhs()
 POST        /saveBuh                  controllers.Users.saveBuh()
 GET         /javascript-routes        controllers.Application.javascriptRoutes
 
-GET         /upload-example           controllers.Files.showExample
-POST        /upload-save              controllers.Files.saveUploadedFile
+GET         /upload-example           controllers.Drive.showExample
+POST        /upload-save              controllers.Drive.saveUploadedFile
 GET         /mail-example             controllers.Mails.showExample
 POST        /mail-save                controllers.Mails.saveMail
 
