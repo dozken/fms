@@ -49,7 +49,7 @@ public class Users extends Controller
         if(mail==null)
             return null;
         else
-            return AuthorisedUser.findByMail(mail);
+            return AuthorisedUser.getByMail(mail);
     }
     
     public static Result newBuh() {
