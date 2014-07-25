@@ -22,6 +22,9 @@ public class Mail extends Model{
 	public AuthorisedUser from;
 	
 	public String message; 
+
+    // drafted, sent, or deleted
+    public String status;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	public List<File> atts;

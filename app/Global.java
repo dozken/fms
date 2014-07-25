@@ -22,9 +22,16 @@ import models.UserPermission;
 import play.Application;
 import play.GlobalSettings;
 import play.libs.Crypto;
+import play.libs.F.Promise;
+import play.mvc.Http.RequestHeader;
+import play.mvc.Result;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import views.html.errorPage;
+import views.html.notFoundPage;
+import static play.mvc.Results.*;
 
 /**
  * @author Steve Chaloner (steve@objectify.be)
@@ -66,5 +73,15 @@ public class Global extends GlobalSettings
             Ebean.saveManyToManyAssociations(user,"roles");
             Ebean.saveManyToManyAssociations(user,"permissions");
         }
+    }
+    public Promise<Result> onError(RequestHeader request, Throwable t) {
+        return Promise.<Result>pure(internalServerError(
+                errorPage.render(t.getMessage())
+        ));
+    }
+    public Promise<Result> onHandlerNotFound(RequestHeader request) {
+        return Promise.<Result>pure(notFound(
+                notFoundPage.render(request.uri())
+        ));
     }
 }

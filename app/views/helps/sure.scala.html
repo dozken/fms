@@ -1,0 +1,22 @@
+@(message: String)
+
+@import play.i18n._
+@import helper._
+@import helper.twitterBootstrap._
+
+<div class="modal fade" id="sure">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                @Messages.get(message)
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="sureButton">@Messages.get("send")</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Messages.get("cancel")</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
