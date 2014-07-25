@@ -23,11 +23,12 @@ public class Folder extends Model{
 	@ManyToOne(cascade = CascadeType.ALL)
 	public AuthorisedUser user;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	public List<File> files;
-	
 	public Long time; 
 	
 	public static final Finder<Long, Folder> find = new Finder<Long, Folder>(Long.class,Folder.class);
+
+    public static Folder findByInfo(AuthorisedUser user, String name){
+        return find.where().eq("user", user).eq("name", name).findUnique();
+    }
 	
 }

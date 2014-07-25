@@ -18,6 +18,7 @@ package models;
 import be.objectify.deadbolt.core.models.Permission;
 import be.objectify.deadbolt.core.models.Role;
 import be.objectify.deadbolt.core.models.Subject;
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.CascadeType;
@@ -42,9 +43,10 @@ public class AuthorisedUser extends Model implements Subject
 
     public String firstName;
     
-    public String lastName; 
-    
-    @Column(unique = true)
+    public String lastName;
+
+    @Column(unique=true)
+    @Constraints.Email
     public String email;
     
     public String password;

@@ -1,0 +1,20 @@
+@(status: String, result : String)
+
+@import play.i18n._
+@import helper._
+@import helper.twitterBootstrap._
+
+<div class="modal fade" id="message">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class='@status'>
+                    @result
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-default" data-dismiss="modal">@Messages.get("close")</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
