@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
@@ -18,11 +20,26 @@ public class Company extends Model{
     
 	public String name;
 	
-	public String requisite;
+	public String address;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	public List<AuthorisedUser> users;
+	public String bin;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
+	public List<Telephone> tels;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	public List<Bank> banks;
+		
+	@ManyToOne(cascade = CascadeType.ALL)
+	public AuthorisedUser buh;  
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "myCompany")
+	public List<AuthorisedUser> workers;
 	
 	public static final Finder<Long, Company> find = new Finder<Long, Company>(Long.class,Company.class);
+
+	public static List<Company> getByBuh(AuthorisedUser buh) {
+		return find.where().eq("buh", buh).findList();
+	}
 	
 }

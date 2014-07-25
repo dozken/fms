@@ -1,0 +1,24 @@
+@(comp : models.Company)
+@content("List") {
+ @if(flash().get("success")!=null){
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>@Messages(flash().get("success"))</strong>
+        </div>
+ }
+	<a href = "@controllers.routes.CompanyUsers.newUser(comp.id)" type = button class = "btn btn-info"> @Messages("newUser") </a>
+	<div>
+		<table class="table table-condensed">
+			<thead>
+				<th> @Messages("name") </th>
+				<th> @Messages("delete") </th>
+			</thead>
+			@for(user <- comp.workers){
+				<tr>
+					<td> @user.firstName</td>
+					<td> <a class="btn btn-danger" href="@controllers.routes.CompanyUsers.delete(user.id)"><span class="glyphicon glyphicon-remove"> </span> </a> </td> 
+				</tr>		
+			} 
+		</table>
+	</div> 
+}

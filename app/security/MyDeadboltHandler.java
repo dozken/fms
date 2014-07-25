@@ -20,6 +20,7 @@ import be.objectify.deadbolt.java.AbstractDeadboltHandler;
 import be.objectify.deadbolt.java.DynamicResourceHandler;
 import models.AuthorisedUser;
 import play.libs.F;
+import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import views.html.accessFailed;
@@ -38,8 +39,10 @@ public class MyDeadboltHandler extends AbstractDeadboltHandler
 
     public Subject getSubject(Http.Context context)
     {
-        // in a real application, the user name would probably be in the session following a login process
-        return AuthorisedUser.findByUserName("steve");
+    	String mail = Controller.session().get("connected");
+        if (mail == null)
+            return null;
+        return AuthorisedUser.getByMail(mail);
     }
 
     public DynamicResourceHandler getDynamicResourceHandler(Http.Context context)

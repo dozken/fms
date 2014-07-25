@@ -5,12 +5,26 @@
 # Home page
 GET     /                               controllers.Application.index
 
-# User
 
+
+# User
 POST    /login                          controllers.Users.login
 GET     /newBuh                         controllers.Users.newBuh()
 GET     /buhs                           controllers.Users.buhs()
 POST    /saveBuh                        controllers.Users.saveBuh()
+GET     /logOut                         controllers.Users.logOut()
+
+# Company
+GET     /compList                       controllers.Companies.list()
+GET     /newComp                        controllers.Companies.newComp()
+GET     /delComp                        controllers.Companies.delete(id : Long)
+POST    /saveComp                       controllers.Companies.saveComp()
+
+# Company Users
+GET     /newUser                        controllers.CompanyUsers.newUser(id : Long)
+GET     /userList                       controllers.CompanyUsers.list(id : Long)
+POST    /saveUser                       controllers.CompanyUsers.saveUser()
+GET     /delUser                        controllers.CompanyUsers.delete(id : Long)
 
 
 

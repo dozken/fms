@@ -23,7 +23,6 @@ public class Mail extends Model{
 	
 	public String message; 
 	
-	
 	@ManyToMany(cascade = CascadeType.ALL)
 	public List<File> atts;
 	

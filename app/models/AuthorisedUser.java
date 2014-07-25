@@ -20,9 +20,14 @@ import be.objectify.deadbolt.core.models.Role;
 import be.objectify.deadbolt.core.models.Subject;
 import play.db.ebean.Model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
 
 import java.util.List;
 
@@ -39,16 +44,24 @@ public class AuthorisedUser extends Model implements Subject
     
     public String lastName; 
     
+    @Column(unique = true)
     public String email;
     
     public String password;
     
-    public String tel;
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Company myCompany; 
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="buh")
+    public List<Company> clients;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    public List<Telephone> tels;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     public List<SecurityRole> roles;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     public List<UserPermission> permissions;
 
     public static final Finder<Long, AuthorisedUser> find = new Finder<Long, AuthorisedUser>(Long.class,AuthorisedUser.class);
@@ -69,6 +82,10 @@ public class AuthorisedUser extends Model implements Subject
     {
         return email;
     }
+    
+    public static void delete(Long id) {
+    	find.byId(id).delete();
+    }
 
     public static AuthorisedUser findByUserName(String userName)
     {
@@ -84,5 +101,9 @@ public class AuthorisedUser extends Model implements Subject
 
 	public static AuthorisedUser getByMail(String email, String password) {
 		return find.where().eq("email", email).eq("password", password).findUnique();
+	}
+
+	public static AuthorisedUser getByMail(String email) {
+		return find.where().eq("email", email).findUnique();
 	}
 }
