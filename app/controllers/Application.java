@@ -1,12 +1,10 @@
 package controllers;
 
 import models.AuthorisedUser;
-import play.Play;
-import play.Routes;
+import play.*;
 import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
-
 import views.html.user.login;
 import views.html.helps.messenger;
 
@@ -14,13 +12,12 @@ public class Application extends Controller{
     public static Result index(){
         return ok(login.render());
     }
-    public static Result javascriptRoutes() {
+    /*public static Result javascriptRoutes() {
         response().setContentType("text/javascript");
         return ok(Routes.javascriptRouter(
-                "myJsRoutes",
-                Drive.saveUploadedFile()
+                "myJsRoutes", routes.Drive.saveUploadedFile()
         ));
-    }
+    }*/
     public static void restrict(){
         AuthorisedUser user = Users.getConnectedUser();
         if(user==null)

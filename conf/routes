@@ -12,7 +12,6 @@ POST        /login                    controllers.Users.login
 GET         /newBuh                   controllers.Users.newBuh()
 GET         /buhs                     controllers.Users.buhs()
 POST        /saveBuh                  controllers.Users.saveBuh()
-GET         /javascript-routes        controllers.Application.javascriptRoutes
 GET     /logOut                         controllers.Users.logOut()
 
 # Company
@@ -27,12 +26,13 @@ GET     /userList                       controllers.CompanyUsers.list(id : Long)
 POST    /saveUser                       controllers.CompanyUsers.saveUser()
 GET     /delUser                        controllers.CompanyUsers.delete(id : Long)
 
-GET         /upload-example           controllers.Drive.showExample
-POST        /upload-save              controllers.Drive.saveUploadedFile
+#GET         /upload-example           controllers.Drive.showExample
+#POST        /upload-save              controllers.Drive.saveUploadedFile()
 GET         /mail-example             controllers.Mails.showExample
 POST        /mail-save                controllers.Mails.saveMail
 
 
 # Map static resources from the /public folder to the /assets URL path
+#GET     /javascript-routes        controllers.Application.javascriptRoutes
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /webjars/*file                    controllers.WebJarAssets.at(file)
