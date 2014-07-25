@@ -29,7 +29,7 @@ public class Drive extends Controller {
         * attach file from drive
         * upload file
      */
-    public static Result showExample(){ return ok(upload_example.render()); }
+    //public static Result showExample(){ return ok(upload_example.render()); }
     public static Result createFolder(String name){
         try{
             Application.restrict();
@@ -96,7 +96,7 @@ public class Drive extends Controller {
         toDelete.delete();
     }
 
-    public static Result saveUploadedFile(long toFolder){
+    public static Result saveUploadedFile(/*long toFolder*/){
         try{
             Application.restrict();
             AuthorisedUser user = Users.getConnectedUser();
@@ -112,7 +112,7 @@ public class Drive extends Controller {
                 String ext = getExtension(file.getName());
                 boolean res = addFileToDir(file, Root+"/"+user.email+"/"+current+"/", now.getTime()+"."+ext);
                 if(res == true) {
-                    Folder folder = Folder.find.byId(toFolder);
+                    Folder folder = new Folder();//Folder.find.byId(toFolder);
                     File ff = new File();
                     ff.folder = folder;
                     ff.name = file.getName();
